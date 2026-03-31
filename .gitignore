@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+# Logs
+*.log
+npm-debug.log*
+# OS
+.DS_Store
+Thumbs.db
+# IDE
+.vscode/
+.idea/
+# Claude Code (internal config, not relevant for the repo)
+.claude/
+CLAUDE.md
+.agents/
+skills-lock.json
+
+# Apresentação
+docs/apresentacao/
+img/

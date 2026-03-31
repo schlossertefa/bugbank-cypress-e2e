@@ -1,0 +1,45 @@
+name: Testes E2E - BugBank
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+    name: Executar testes Cypress
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: npm ci --legacy-peer-deps
+
+      - name: Aguardar o site estar disponível
+        run: |
+          for i in {1..10}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://bugbank.netlify.app)
+            if [ "$STATUS" = "200" ]; then
+              echo "Site disponível (HTTP $STATUS)"
+              break
+            fi
+            echo "Tentativa $i falhou (HTTP $STATUS), aguardando 15s..."
+            sleep 15
+          done
+
+      - name: Executar testes (smoke)
+        run: npm run cy:smoke
+
+      - name: Upload do relatório HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-cypress
+          path: docs/relatorios/
+          retention-days: 7

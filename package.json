@@ -1,0 +1,37 @@
+{
+  "name": "projeto-bugbank",
+  "version": "1.0.0",
+  "description": "Automação de testes E2E para o BugBank com Cypress, Cucumber e BDD",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "cy:focus": "cypress open --env tags=@run",
+    "cy:smoke": "cypress run --env tags=@smoke",
+    "cy:regression": "cypress run --env tags=@regression",
+    "cy:bug": "cypress open --env tags=@bug"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@cypress/webpack-preprocessor": "^7.0.2",
+    "webpack": "^5.105.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/e2e/step-definitions/**/*.js",
+    "filterSpecs": true,
+    "omitFiltered": true,
+    "html": {
+      "enabled": true,
+      "output": "docs/relatorios/report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "docs/relatorios/messages.ndjson"
+    }
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "cypress": "^15.13.0"
+  }
+}
