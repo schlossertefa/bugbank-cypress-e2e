@@ -14,6 +14,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cypress/webpack-preprocessor": "^7.0.2",
+    "esbuild": "^0.25.0",
     "webpack": "^5.105.4"
   },
   "cypress-cucumber-preprocessor": {
