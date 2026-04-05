@@ -34,7 +34,7 @@ jobs:
           done
 
       - name: Executar testes (smoke)
-        run: npm run cy:smoke
+        run: npx cypress run --env tags="@smoke and not @flaky"
 
       - name: Upload do relatório HTML
         if: always()

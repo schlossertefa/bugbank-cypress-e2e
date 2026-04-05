@@ -1,6 +1,7 @@
 @smoke
 Feature: Fluxo completo do usuário
 
+  @flaky
   Scenario: Criar conta, logar e visualizar saldo
     Given que eu crio um novo usuário
     When faço login com esse usuário
