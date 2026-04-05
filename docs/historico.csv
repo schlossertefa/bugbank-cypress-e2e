@@ -1,0 +1,12 @@
+data,hora,tags,status,passou,falhou
+05/04/2026,13:26:58,@smoke,PASSOU,11,0
+05/04/2026,13:49:44,@smoke,PASSOU,11,0
+05/04/2026,14:31:50,@smoke,PASSOU,11,0
+05/04/2026,15:42:09,@regression-suite,FALHOU,26,1
+05/04/2026,15:48:14,@regression-suite,FALHOU,26,1
+05/04/2026,15:58:14,@regression-suite,FALHOU,26,1
+05/04/2026,16:39:46,@regression-suite,FALHOU,26,1
+05/04/2026,16:50:58,@regression-suite,FALHOU,26,1
+05/04/2026,16:57:34,@regression-suite,FALHOU,26,1
+05/04/2026,17:17:10,@regression-suite,FALHOU,26,1
+05/04/2026,17:23:28,@regression-suite,FALHOU,26,1

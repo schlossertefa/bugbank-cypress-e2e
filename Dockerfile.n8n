@@ -1,0 +1,9 @@
+FROM n8nio/n8n
+
+USER root
+
+RUN npm install -g newman newman-reporter-htmlextra
+
+ENV PATH="/opt/nodejs/node-v24.13.1/bin:${PATH}"
+
+USER node

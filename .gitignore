@@ -20,6 +20,9 @@ CLAUDE.md
 .agents/
 skills-lock.json
 
+# Relatórios gerados automaticamente
+docs/relatorios/
+
 # Apresentação
 docs/apresentacao/
 img/

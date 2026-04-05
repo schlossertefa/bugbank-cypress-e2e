@@ -1,0 +1,81 @@
+{
+  "name": "Bugbank - Executar Testes Cypress",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "run-tests",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "=bash /home/node/project/run-tests.sh {{ $json.body.tags || '@smoke' }}"
+      },
+      "id": "execute-command-node",
+      "name": "Executar Testes",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "={{ $json.exitCode === 0 ? 'PASSOU' : 'FALHOU' }}"
+            },
+            {
+              "name": "saida",
+              "value": "={{ $json.stdout }}"
+            },
+            {
+              "name": "erros",
+              "value": "={{ $json.stderr }}"
+            }
+          ]
+        }
+      },
+      "id": "set-node",
+      "name": "Formatar Resultado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [720, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Executar Testes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Executar Testes": {
+      "main": [
+        [
+          {
+            "node": "Formatar Resultado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

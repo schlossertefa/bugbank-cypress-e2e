@@ -62,3 +62,13 @@ markmap:
 - ✅ Logout encerra sessão e redireciona para o login
 - ✅ Extrato exibe transferência realizada
 - ✅ Cadastro com senhas diferentes bloqueia cadastro
+
+## ⚙️ Pipeline n8n — Automação de Execução
+- ✅ CT-N8N-01 — Webhook dispara execução dos testes 🔴 Alto
+- ✅ CT-N8N-02 — Schedule Trigger executa no horário configurado 🔴 Alto
+  - Todo dia às 13h (NY) = 14h (Brasil)
+- ✅ CT-N8N-03 — Email enviado com resultado correto após execução 🟡 Médio
+  - status | testes | falhas | tags | data
+- ✅ CT-N8N-04 — Histórico gravado em docs/historico.csv 🟡 Médio
+- **Fluxo:** Trigger → HTTP Request → Formatar Resultado → Email
+- **Execução:** test-server.js + Cypress (Docker)
